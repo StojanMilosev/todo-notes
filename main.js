@@ -20,15 +20,18 @@ var addNote = function(){
             note.style.border = "solid thin red";
         }else if(note.value !== ""){
             note.style.border = "solid thin black";
-            localStorage.setItem(note.value,"");
-            location.reload(); 
+            try {
+                localStorage.setItem(note.value,"");
+                location.reload(); 
+            } catch (error) {
+                console.log(error);
+            }
         }
 };
 
 var nodes = document.getElementsByTagName('li');
 
 for(var i=0;i<nodes.length;i++){
-    console.log(nodes[i].textContent);
     nodes[i].addEventListener('click',function(){
         localStorage.removeItem(this.textContent);
         location.reload();

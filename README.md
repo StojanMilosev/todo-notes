@@ -1,5 +1,5 @@
-### application name
+### To do notes
 
-application description
+Simple to do style notes using vanila Javascript, notes are save in the browsers localStorage
 
-### [Live demo](application url)
+### [Live demo](https://stojanmilosev.github.io/todo-notes/)

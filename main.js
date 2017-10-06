@@ -3,15 +3,17 @@
 var note = document.getElementById("note");
 var note_list = document.getElementById("note-list");
 
-for(var n in localStorage){
-    var note_node = document.createElement("li");
-    try {
-        note_node.appendChild(document.createTextNode(n));
-        note_list.appendChild(note_node);
-    } catch (error) {
-        console.log(error);
+(function(){
+    for(var n in localStorage){
+        var note_node = document.createElement("li");
+        try {
+            note_node.appendChild(document.createTextNode(n));
+            note_list.appendChild(note_node);
+        } catch (error) {
+            console.log(error);
+        }
     }
-}
+})();
 
 var addNote = function(){
     event.preventDefault();
@@ -31,9 +33,15 @@ var addNote = function(){
 
 var nodes = document.getElementsByTagName('li');
 
-for(var i=0;i<nodes.length;i++){
-    nodes[i].addEventListener('click',function(){
-        localStorage.removeItem(this.textContent);
-        location.reload();
-    });
-}
+(function(){
+    for(var i=0;i<nodes.length;i++){
+        nodes[i].addEventListener('click',function(){
+            try {
+                localStorage.removeItem(this.textContent);
+                location.reload();            
+            } catch (error) {
+                console.log(error);
+            }
+        });
+    }
+})();
